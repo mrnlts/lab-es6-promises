@@ -1,31 +1,52 @@
-// This will print in the wrong order
-// we added it for you to test to make sure data is loaded
-// 🚨🚨🚨 comment out the next 3 lines when you start working on the code
-for (let i = 0; i < mashPotatoes.length; i++) {
-  //addFood(steak[i], '#steak');
-  console.log(mashPotatoes[i])
+// Iteration 0
+
+function addFood( recipe, recipeID ) 
+{
+  let currentRecipe = document.querySelector( recipeID );
+
+  let steps = currentRecipe.getElementsByTagName( "li" );
+  
+  let i = 0;
+
+  const stepCascade = setInterval( () => {
+
+    if ( steps.length < recipe.length ) {
+  
+      currentRecipe.innerHTML += `<li> ${recipe[i]} </li>`;
+  
+      i++;
+  
+    }
+
+  }, 1000 );
 }
 
-// Iteration 1 using callbacks
-addFood(steak[0], '#steak', () => {
-  // ... your code here
-  addFood(steak[1], '#steak', () => {
+addFood(brusselSprouts, '#brusselSprouts');
 
-  })
-});
+addFood(mashPotatoes, '#mashPotatoes');
+
+addFood(steak, '#steak');
+
+// // Iteration 1 using callbacks
+// addFood(steak[0], '#steak', () => {
+//   // ... your code here
+//   addFood(steak[1], '#steak', () => {
+
+//   })
+// });
 
 
 
-// Iteration 2 using `.then()`
-addFood(mashPotatoes[0], '#mashPotatoes').then(() => {
-  // ... your code here
-  addFood(mashPotatoes[1], '#mashPotatoes')
-});
+// // Iteration 2 using `.then()`
+// addFood(mashPotatoes[0], '#mashPotatoes').then(() => {
+//   // ... your code here
+//   addFood(mashPotatoes[1], '#mashPotatoes')
+// });
 
-// Iteration 3 using async and await
+// // Iteration 3 using async and await
 
-  async function makeFood(step) {
-    // ... your code here
+//   async function makeFood(step) {
+//     // ... your code here
     
-  }
-  makeFood(eachStep);
+//   }
+//   makeFood(eachStep);
