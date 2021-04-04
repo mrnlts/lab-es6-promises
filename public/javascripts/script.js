@@ -64,34 +64,44 @@
 
 
 
-// Iteration 2 using `.then()`
-addFood( mashPotatoes[0], '#mashPotatoes')
 
-  .then( () => {
+// // Iteration 2 using `.then()`
+// addFood( mashPotatoes[0], '#mashPotatoes')
+
+//   .then( () => {
   
-    addFood( mashPotatoes[1], '#mashPotatoes')
-      .then( () => {
+//     addFood( mashPotatoes[1], '#mashPotatoes')
+//       .then( () => {
     
-        addFood( mashPotatoes[2], '#mashPotatoes')
-          .then( () => {
+//         addFood( mashPotatoes[2], '#mashPotatoes')
+//           .then( () => {
         
-          addFood( mashPotatoes[3], '#mashPotatoes')
-            .then( () => {
+//           addFood( mashPotatoes[3], '#mashPotatoes')
+//             .then( () => {
           
-              addFood( mashPotatoes[4], '#mashPotatoes');
+//               addFood( mashPotatoes[4], '#mashPotatoes');
         
-          });
+//           });
     
-      });
+//       });
   
-    });
+//     });
 
-  });
+//   });
 
-// // Iteration 3 using async and await
 
-//   async function makeFood(step) {
-//     // ... your code here
-    
-//   }
-//   makeFood(eachStep);
+
+
+// Iteration 3 using async and await
+
+  async function makeFood( steps, id ) {
+  
+    for ( let i = 0; i < brusselSprouts.length; i++ ) {
+
+      await addFood( steps[i], '#brusselSprouts' );
+
+    }
+
+  }
+
+  makeFood( brusselSprouts );
