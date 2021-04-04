@@ -1,9 +1,6 @@
-const table = document.getElementById( "table" );
+// // Iteration 0
 
-// Iteration 0
-
-// function addFood( recipe, recipeID ) 
-// {
+// function addFood( recipe, recipeID ) {
 //   let currentRecipe = document.querySelector( recipeID );
 
 //   let steps = currentRecipe.getElementsByTagName( "li" );
@@ -31,99 +28,135 @@ const table = document.getElementById( "table" );
 
 
 
-// Iteration 1 using callbacks
+// // Iteration 1 using callbacks
+
 let steakImg = document.createElement( "div" );
+
 steakImg.innerHTML = ' <img src = "./public/images/steak.jpg"> ';
 
-addFood(steak[0], '#steak', () => {
+// addFood(steak[0], '#steak', () => {
   
-  addFood( steak[1], '#steak', () => {
+//   addFood( steak[1], '#steak', () => {
     
-    addFood( steak[2], '#steak', () => {
+//     addFood( steak[2], '#steak', () => {
       
-      addFood( steak[3], '#steak', () => {
+//       addFood( steak[3], '#steak', () => {
         
-        addFood( steak[4], '#steak', () => {
+//         addFood( steak[4], '#steak', () => {
           
-          addFood( steak[5], '#steak', () => {
+//           addFood( steak[5], '#steak', () => {
 
-            addFood( steak[6], '#steak', () => { 
+//             addFood( steak[6], '#steak', () => { 
               
-              addFood( steak[7], '#steak', () => { 
+//               addFood( steak[7], '#steak', () => { 
 
-                table.appendChild( steakImg );
+//                 table.appendChild( steakImg );
 
-              });
+//               });
                           
-            });
+//             });
           
-          });
+//           });
         
-        });
+//         });
       
-      });
+//       });
     
-    });
+//     });
   
-  });
+//   });
 
-});
-
-
+// });
 
 
-// Iteration 2 using `.then()`
-let potatoesImg = document.createElement( "div" );
 
-potatoesImg.innerHTML = ' <img src = "./public/images/mashPotatoes.jpg"> ';
 
-addFood( mashPotatoes[0], '#mashPotatoes')
+// // Iteration 2 using `.then()`
+let mashPotatoesImg = document.createElement( "div" );
 
-  .then( () => {
+mashPotatoesImg.innerHTML = ' <img src = "./public/images/mashPotatoes.jpg"> ';
+
+// addFood( mashPotatoes[0], '#mashPotatoes')
+
+//   .then( () => {
   
-    addFood( mashPotatoes[1], '#mashPotatoes')
-      .then( () => {
+//     addFood( mashPotatoes[1], '#mashPotatoes')
+//       .then( () => {
     
-        addFood( mashPotatoes[2], '#mashPotatoes')
-          .then( () => {
+//         addFood( mashPotatoes[2], '#mashPotatoes')
+//           .then( () => {
         
-          addFood( mashPotatoes[3], '#mashPotatoes')
-            .then( () => {
+//           addFood( mashPotatoes[3], '#mashPotatoes')
+//             .then( () => {
           
-              addFood( mashPotatoes[4], '#mashPotatoes')
-                .then( () => {
+//               addFood( mashPotatoes[4], '#mashPotatoes')
+//                 .then( () => {
 
-                  table.appendChild( potatoesImg );
+//                   table.appendChild( mashPotatoesImg );
 
-              });
+//               });
       
-          });
+//           });
   
-        });
+//         });
 
-    });
+//     });
 
-});
+// });
 
 
 
 
 // Iteration 3 using async and await
 
+let table = document.getElementById( "table" );
+
 let brusselSproutsImg = document.createElement( "div" );
 
 brusselSproutsImg.innerHTML = ' <img src = "./public/images/brusselSprouts.jpg"> ';
 
+
 async function makeFood( steps, id ) {
+  let recipeImg;
+  
+  switch ( id ) {
+    case '#steak':
+      recipeImg = steakImg;
+      break;
 
-  for ( let i = 0; i < brusselSprouts.length; i++ ) {
+    case '#mashPotatoes':
+      recipeImg = mashPotatoesImg;
+      break;
 
-    await addFood( steps[i], '#brusselSprouts' );
+    case '#brusselSprouts':
+      recipeImg = brusselSproutsImg;
+      break;
 
   }
 
-  table.appendChild(brusselSproutsImg);
+  for ( let i = 0; i < steps.length; i++ ) {
+
+    await addFood( steps[i], id );
+
+  }
+  
+  table.appendChild( recipeImg );
 
 }
 
-makeFood( brusselSprouts );
+
+Promise.all([ 
+
+  makeFood( mashPotatoes, '#mashPotatoes' ), 
+
+  makeFood( steak, '#steak' ), 
+
+  makeFood( brusselSprouts, '#brusselSprouts' )
+
+])
+
+  .then( () => 
+  
+  alert('Dinner is served!')
+  
+  );
