@@ -1,39 +1,66 @@
 // Iteration 0
 
-function addFood( recipe, recipeID ) 
-{
-  let currentRecipe = document.querySelector( recipeID );
+// function addFood( recipe, recipeID ) 
+// {
+//   let currentRecipe = document.querySelector( recipeID );
 
-  let steps = currentRecipe.getElementsByTagName( "li" );
+//   let steps = currentRecipe.getElementsByTagName( "li" );
   
-  let i = 0;
+//   let i = 0;
 
-  const stepCascade = setInterval( () => {
+//   const stepCascade = setInterval( () => {
 
-    if ( steps.length < recipe.length ) {
+//     if ( steps.length < recipe.length ) {
   
-      currentRecipe.innerHTML += `<li> ${recipe[i]} </li>`;
+//       currentRecipe.innerHTML += `<li> ${recipe[i]} </li>`;
   
-      i++;
+//       i++;
   
-    }
+//     }
 
-  }, 1000 );
-}
+//   }, 1000 );
+// }
 
-addFood(brusselSprouts, '#brusselSprouts');
+// addFood(brusselSprouts, '#brusselSprouts');
 
-addFood(mashPotatoes, '#mashPotatoes');
+// addFood(mashPotatoes, '#mashPotatoes');
 
-addFood(steak, '#steak');
+// addFood(steak, '#steak');
 
-// // Iteration 1 using callbacks
-// addFood(steak[0], '#steak', () => {
-//   // ... your code here
-//   addFood(steak[1], '#steak', () => {
 
-//   })
-// });
+
+Iteration 1 using callbacks
+addFood(steak[0], '#steak', () => {
+  
+  addFood( steak[1], '#steak', () => {
+    
+    addFood( steak[2], '#steak', () => {
+      
+      addFood( steak[3], '#steak', () => {
+        
+        addFood( steak[4], '#steak', () => {
+          
+          addFood( steak[5], '#steak', () => {
+
+            addFood( steak[6], '#steak', () => {
+              
+              addFood( steak[7], '#steak', () => { 
+
+              });
+                          
+            });
+          
+          });
+        
+        });
+      
+      });
+    
+    });
+  
+  });
+
+});
 
 
 
